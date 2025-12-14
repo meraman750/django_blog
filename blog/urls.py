@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 app_name = "blog"
 
 urlpatterns = [
+    path("", views.home, name="home_page"),
     path("register/", views.register, name="register"),
     path("accounts/profile/", views.my_profile_redirect, name="my-profile"),
     path("accounts/profile/<str:username>/", views.profile, name="profile"),

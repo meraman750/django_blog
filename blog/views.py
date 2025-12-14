@@ -12,6 +12,8 @@ from django.urls import reverse_lazy, reverse
 from django.db.models import Q
 from django.http import HttpResponseForbidden
 
+def home(request):
+    return redirect("post-list")
 
 def register(request):
     if request.method == "POST":
