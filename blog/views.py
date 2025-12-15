@@ -13,7 +13,7 @@ from django.db.models import Q
 from django.http import HttpResponseForbidden
 
 def home(request):
-    return redirect("post-list")
+    return redirect("blog:post-list")
 
 def register(request):
     if request.method == "POST":
