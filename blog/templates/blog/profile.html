@@ -10,8 +10,8 @@
     <!-- Profile Picture -->
     <img
       class="profile-picture"
-      src="{{ profile.profile_picture.url }}"
-      alt="Profile Picture"
+      src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'blog/img/default-profile.png' %}{% endif %}"
+      alt="{{ user_obj.username }}'s Profile Picture"
     />
 
     <!-- Username -->
@@ -36,7 +36,7 @@
     <li class="post-item">
       <!-- Post Image -->
       <img
-        src="{% if post.photo %}{{ post.photo.url }}{% else %}{% static 'blog/images/default.png' %}{% endif %}"
+        src="{% if post.photo %}{{ post.photo.url }}{% else %}{% static 'blog/img/default-post.jpg' %}{% endif %}"
         width="350"
         style="border-radius: 5px"
       />

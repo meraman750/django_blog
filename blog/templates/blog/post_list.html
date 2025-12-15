@@ -27,7 +27,8 @@ All Posts
   {% for post in posts %}
   <li class="post-item">
     <img
-      src="{% if post.photo %}{{ post.photo.url }} {% else %} {% static 'blog/images/default.png' %} {% endif %}"
+      src="{% if post.photo %}{{ post.photo.url }}{% else %}{% static 'blog/images/default.png' %}{% endif %}"
+      alt="{{ post.title }}"
       width="350"
       style="border-radius: 5px"
     />

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Tag(models.Model):
@@ -22,8 +23,11 @@ class Post(models.Model):
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post")
-    photo = models.ImageField(upload_to="post_pics/", blank=True, null=True)
-
+    photo = CloudinaryField(
+            'post_image',
+            blank=True,
+            null=True
+        )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -42,7 +46,11 @@ class Post(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_picture = models.ImageField(upload_to="profile_pics/", default="profile_pics/some_one.jpg")
+    profile_picture = CloudinaryField(
+        'profile_picture',
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.user.username

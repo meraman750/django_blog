@@ -14,7 +14,7 @@
 
 <li class="post-item">
     <img
-      src="{% if post.photo %}{{ post.photo.url }} {% endif %}"
+      src="{% if post.photo %}{{ post.photo.url }}{% else %}{% static 'blog/images/default.png' %}{% endif %}"
       width="300"
       style="border-radius: 5px"
     />
